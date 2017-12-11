@@ -1,0 +1,32 @@
+{
+  "entry": "src/index.js",
+  "disableCSSModules": true,
+  "externals": {
+    "react": "React",
+    "react-dom": "ReactDOM"
+  },
+  "extraBabelPlugins": [
+    "transform-runtime",
+    ["import",[
+      { "libraryName": "antd", "style": "css" }
+     ]
+    ]
+  ],
+  "env": {
+    "development": {
+      "extraBabelPlugins": [
+        "dva-hmr",
+        "transform-runtime",
+        ["import",[
+          { "libraryName": "antd", "style": "css" }
+         ]
+        ]
+      ]
+    }
+  },
+  "proxy": {
+    "/api": {
+      "target": "http://localhost:2333/"
+    }
+  }
+}

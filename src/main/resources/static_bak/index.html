@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>书城首页</title>
+    <link rel="stylesheet" href="css/me.css" />
+    <link rel="stylesheet" href="css/bootstrap.css" />
+	<link rel="stylesheet" href="css/login.css">
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js" ></script>
+	<script type="text/javascript" src="js/change.js"></script>
+	<script type="text/javascript" src="js/shoppingCart.js"></script>
+    <script type="text/javascript" src="js/getGoods.js" ></script>
+	<script>
+        jQuery(document).ready(function($) {
+            $('.theme-login').click(function(){
+                $('.theme-popover-mask').fadeIn(100);
+                $('.theme-popover').slideDown(200);
+            })
+			$('.register').click(function () {
+				alert("暂未实现");
+            })
+            $('.theme-poptit .close').click(function(){
+                $('.theme-popover-mask').fadeOut(100);
+                $('.theme-popover').slideUp(200);
+            })
+
+        })
+	</script>
+</head>
+<body onload="init()">
+    <div id = head>
+        <div id = "title" >
+             <p>欢迎光临悦读，<span id="username"></span><span id="nouser"><a class="btn btn-primary btn-large theme-login" href="javascript:;">登录</a>|<a class='btn btn-primary btn-large register'>注册</a></span>|当前在线人数<span id="onlineNum" style="color: mediumvioletred;"></span>人</p>
+        </div>
+        <div style="padding-bottom: 10px ;">
+        	<div style="padding-left: 15% ;text-align: left;">
+        		<button onclick="find(1)">书名搜索</button>
+        		<button onclick="find(2)">价格搜索</button>
+        		<div id = "img_car">
+        		    <button onclick="showDiv(5)"><img src="image/car.png"/></button>
+        		</div>
+        	</div>
+            <div>
+            	<hr/>
+            	<div id="ns">
+            		<input id="key" type="text" placeholder="书名关键字"/>
+            		<input type="button" onclick="showDiv(1)" value="搜索" />
+            	</div>
+                <div id="ps" style="display: none;">
+                	<input id="min" type="text" placeholder="最低价格"/>
+                	<input id="max" type="text" placeholder="最高价格"/>
+                	<input type="button" onclick="showDiv(2)" value="搜索" />
+                </div>
+            </div>
+        </div>
+		<div id = "logo">
+			<img src="image/logo.png" style="width: 80%; height: 200px;">
+		</div>
+	</div>
+    <div id = "body" class="container-fluid">
+		<div class="row-fluid">
+			<div class="span12">
+				<div id="popular">
+					<table class="table">
+						<thead>
+							<tr>
+								<th>
+								  热销书籍
+								</th>
+							</tr>
+						</thead>
+						<tbody id="s_popular">
+
+						</tbody>
+						<thead>
+							<tr>
+								<th id="p_popular">
+
+								</th>
+							</tr>
+						</thead>
+					</table>
+				</div>
+				<div id="mostNew">
+					 <table class="table">
+						<thead>
+							<tr>
+								<th>
+								  新书上架
+								</th>
+							</tr>
+						</thead>
+						<tbody id ="s_mostNew" >
+
+						</tbody>
+						<thead>
+							<tr>
+								<th id="p_mostNew">
+
+								</th>
+							</tr>
+						</thead>
+					</table>
+				</div>
+				<div id="search" style="display: none;">
+					<table class="table">
+						<thead>
+							<tr>
+								<td>
+
+								</td>
+							</tr>
+						</thead>
+						<tbody id="s_search">
+							
+						</tbody>
+						<thead>
+							<tr>
+								<th id="p_search">
+
+								</th>
+							</tr>
+						</thead>
+					</table>
+				</div>
+				<div id="car" style="display: none;">
+					<table class="table">
+						<thead>
+							<tr>
+								<th>
+									购物车
+								</th>
+							</tr>
+						</thead>
+						<tbody id="s_car">
+
+						</tbody>
+						<thead style="display: none" id="change">
+							<tr>
+								<th>
+									<td>共计：<input type="text" id="countPrice" style="color: red" readonly="readonly"/>元</td>
+									<td><button onclick="showUserInfo()">去结算</button></td>
+								</th>
+							</tr>
+						</thead>
+						<thead style="display: none" id = "info">
+							<tr>
+								<th>请核对配送信息</th>
+							</tr>
+							<th>
+								<td>姓名:<span id="name"></span></td>
+								<td>地址:<span id="address"></span></td>
+								<td>电话:<span id="phone"></span></td>
+							</th>
+						</thead>
+						<thead style="display: none" id="showpay">
+							<th>
+								<td><input id="pay" type="text" placeholder="请输入支付金额"/></td>
+								<td><button onclick="change()">确认支付</button></td>
+							</th>
+						</thead>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+    <div id = "tail">
+    	<p>版权所有@SunRise</p>
+    </div>
+	<div class="theme-popover">
+		<div class="theme-poptit">
+			<a href="javascript:;" title="关闭" class="close">×</a>
+			<h3>登录 是一种态度</h3>
+		</div>
+		<div class="theme-popbod dform">
+			<form class="theme-signin" name="loginform" action="" method="post">
+				<ol>
+					<li><h4>你必须先登录！</h4></li>
+					<li><strong>用户名：</strong><input id = "uname" class="ipt" type="text" name="log" placeholder="邮箱" size="20" /></li>
+					<li><strong>密码：</strong><input id="pwd" class="ipt" type="password" name="pwd" placeholder="密码" size="20" /></li>
+					<li><input class="btn btn-primary" type="button" onclick="login()" value=" 登 录 " /></li>
+				</ol>
+			</form>
+		</div>
+	</div>
+</body>
+</html>
