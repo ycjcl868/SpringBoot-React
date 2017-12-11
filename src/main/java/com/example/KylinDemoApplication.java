@@ -12,10 +12,10 @@ import org.springframework.boot.web.servlet.ServletListenerRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
 @SpringBootApplication
-public class SpringBootDemoApplication {
+public class KylinDemoApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringBootDemoApplication.class, args);
+		SpringApplication.run(KylinDemoApplication.class, args);
 	}
 	@Bean
 	public EmbeddedServletContainerCustomizer containerCustomizer(){

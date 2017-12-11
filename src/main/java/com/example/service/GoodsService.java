@@ -23,7 +23,7 @@ public class GoodsService {
        ReplyBox replyBox = new ReplyBox();
        try {
            Sort sort = new Sort(Sort.Direction.DESC,"saleNum");
-           Pageable pageable = new PageRequest(Integer.parseInt(pageSize),6,sort);
+           Pageable pageable = new PageRequest(Integer.parseInt(pageSize),10,sort);
            Page<GoodsBean> page = goodsRepository.findAll(pageable);
            replyBox.setRtCode("0");
            replyBox.setData(page.getContent());
@@ -39,7 +39,7 @@ public class GoodsService {
        ReplyBox replyBox = new ReplyBox();
        try {
            Sort sort = new Sort(Sort.Direction.DESC,"time");
-           Pageable pageable = new PageRequest(Integer.parseInt(pageSize),6,sort);
+           Pageable pageable = new PageRequest(Integer.parseInt(pageSize),10,sort);
            Page<GoodsBean> page = goodsRepository.findAll(pageable);
            replyBox.setRtCode("0");
            replyBox.setData(page.getContent());

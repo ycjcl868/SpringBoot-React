@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/index")
+@RequestMapping("/api")
 public class IndexController {
 
     @Autowired
@@ -21,10 +21,11 @@ public class IndexController {
        return goodsService.getPopularGoods(pageSize);
     }
 
-    @RequestMapping(value = "/findMostNew", method = RequestMethod.GET)
+    @RequestMapping(value = "/goods", method = RequestMethod.GET)
     public Object getMostNewGoods(@RequestParam String pageSize){
         return goodsService.getMostNewGoods(pageSize);
     }
+
 
     @RequestMapping("/findByKey")
     public Object getGoodsByKey(@RequestParam String key,@RequestParam String pageSize){

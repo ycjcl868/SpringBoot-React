@@ -15,12 +15,12 @@ public class GoodsBean implements Serializable {
     private String goodsName;
     @Column(name = "author")
     private String author;
-    @Column(name = "press")
-    private String press;
+    @Column(name = "thumbnail")
+    private String thumbnail;
     @Column(name = "price")
     private Integer price;
     @Column(name = "number")
-    private Integer number;
+    private Float number;
     @Column(name = "salenum")
     private Integer saleNum;
     @Column(name = "time")
@@ -53,22 +53,22 @@ public class GoodsBean implements Serializable {
         this.price = price;
     }
 
-    public Integer getNumber() {
+    public Float getNumber() {
 
         return number;
     }
 
-    public void setNumber(Integer number) {
+    public void setNumber(Float number) {
         this.number = number;
     }
 
-    public String getPress() {
+    public String getThumbnail() {
 
-        return press;
+        return thumbnail;
     }
 
-    public void setPress(String press) {
-        this.press = press;
+    public void setThumbnail(String thumbnail) {
+        this.thumbnail = thumbnail;
     }
 
     public String getAuthor() {
