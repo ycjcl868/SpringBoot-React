@@ -27,17 +27,4 @@ public class KylinDemoApplication {
 			}
 		};
 	}
-	@Bean
-	public ServletListenerRegistrationBean servletListenerRegistrationBean(){
-		ServletListenerRegistrationBean servletListenerRegistrationBean = new ServletListenerRegistrationBean();
-		servletListenerRegistrationBean.setListener(new OnlineCount());
-		return servletListenerRegistrationBean;
-	}
-	@Bean
-    public FilterRegistrationBean filterRegistrationBean(){
-		FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean();
-		filterRegistrationBean.setFilter(new CheckIsLogin());
-		filterRegistrationBean.addUrlPatterns("/index/showCar","/index/putCar");
-		return filterRegistrationBean;
-	}
 }
